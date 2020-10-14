@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  annotations:
+    meta.helm.sh/release-namespace: tekton-demo
+  labels:
+    k8s-app: prometheus
+  name: tekton-mon
+  namespace: monitoring-stack
+spec:
+  namespaceSelector:
+    matchNames:
+    - openshift-pipelines
+  selector:
+    matchLabels:
+      app: tekton-pipelines-controller
+  endpoints:
+  - port: http-metrics
+    interval: "10s"

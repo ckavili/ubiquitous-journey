@@ -1,0 +1,24 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: nexus-mon
+  labels:
+    k8s-app: prometheus
+spec:
+  namespaceSelector:
+    matchNames:
+    - labs-ci-cd
+  selector:
+    matchLabels:
+      app: sonatype-nexus
+  endpoints:
+  - port: nexus-service
+    interval: 30s
+    path: /service/metrics/prometheus
+    basicAuth:
+      password: 
+        name: nexus-password
+        key: password
+      username: 
+        name: nexus-password
+        key: username

@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: jenkins-mon
+  labels:
+    k8s-app: prometheus
+spec:
+  namespaceSelector:
+    matchNames:
+    - labs-ci-cd
+  selector:
+    matchLabels:
+      rht-labs.com/uj: jenkins
+  endpoints:
+  - port: web
+    interval: 30s
+    path: /prometheus
