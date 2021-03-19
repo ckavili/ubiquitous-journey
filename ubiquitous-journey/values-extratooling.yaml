@@ -143,3 +143,12 @@ applications:
         jsonPointers:
           - /status/ingress
           - /spec/host
+  # Maildev
+  - name: maildev
+    enabled: true
+    source: https://github.com/maildev/helm.git
+    source_path: charts/maildev
+    destination: *pm_ns
+    source_ref: "maildev-0.1.3"
+    sync_policy: *sync_policy_true
+
