@@ -42,7 +42,7 @@ applications:
         kind: Route
         jsonPointers:
           - /status/ingress
-  # Jenkins
+  # Jenkins 
   - name: jenkins
     enabled: true
     source: https://github.com/redhat-cop/helm-charts.git
