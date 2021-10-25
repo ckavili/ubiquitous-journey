@@ -167,7 +167,7 @@ applications:
     no_helm: true
   # Pelorus-operators
   - name: pelorus-operators
-    enabled: true
+    enabled: false
     source: https://github.com/konveyor/pelorus.git
     source_path: charts/operators
     source_ref: master
