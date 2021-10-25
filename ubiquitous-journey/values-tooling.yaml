@@ -27,7 +27,7 @@ sync_policy_no_selfheal: &sync_policy_no_selfheal
 applications:
   # Nexus
   - name: nexus
-    enabled: false
+    enabled: true
     source: https://redhat-cop.github.io/helm-charts
     chart_name: sonatype-nexus
     source_path: ""
@@ -74,7 +74,7 @@ applications:
           - /spec/triggers
   # Pact-broker
   - name: pact-broker
-    enabled: true
+    enabled: false
     source: https://github.com/redhat-cop/helm-charts.git
     source_path: charts/pact-broker
     source_ref: "pact-broker-0.0.3"
@@ -117,7 +117,7 @@ applications:
           - https://github.com/SonarSource/SonarTS/releases/download/2.1.0.4359/sonar-typescript-plugin-2.1.0.4362.jar
   # CodeReady Workspaces
   - name: crw
-    enabled: true
+    enabled: false
     destination: crw
     source: https://github.com/rht-labs/refactored-adventure
     source_path: crw/base
@@ -156,37 +156,9 @@ applications:
         desiredContainers: 0
         podAnnotations:
           app: zalenium
-  # Hoverfly
-  - name: hoverfly
-    enabled: true
-    source: https://github.com/helm/charts.git
-    source_path: incubator/hoverfly
-    sync_policy: *sync_policy_true
-    destination: *ci_cd_ns
-    source_ref: "master"
-    values:
-      replicaCount: "1"
-      openshift:
-        route:
-          admin:
-            enabled: true
-            hostname: ""
-          proxy:
-            enabled: true
-            hostname: ""
-    ignore_differences:
-      - group: route.openshift.io
-        kind: Route
-        jsonPointers:
-          - /status/ingress
-          - /spec/host
-      - group: apps/v1
-        kind: Deployment
-        jsonPointers:
-          - /spec/replicas
   # Tekton
   - name: tekton
-    enabled: true
+    enabled: false
     destination: openshift-operators
     source: https://github.com/rht-labs/refactored-adventure
     source_path: tekton/base
@@ -210,7 +182,7 @@ applications:
           - /spec/host
   # Pelorus
   - name: pelorus
-    enabled: true
+    enabled: false
     source: https://github.com/konveyor/pelorus.git
     source_path: charts/pelorus
     source_ref: master
