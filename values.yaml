@@ -1,6 +1,6 @@
 # Tell ArgoCD where to find the ubiquitous-journey project
 source: https://github.com/ckavili/ubiquitous-journey.git
-team: labs
+team: cansu
 release: ci-cd
 
 applications:
