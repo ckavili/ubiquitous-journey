@@ -39,7 +39,7 @@ applications:
 
   # Extra tooling such as task management and chat apps
   - name: uj-extras
-    enabled: false
+    enabled: true
     source_path: "."
     helm_values:
       - ubiquitous-journey/values-day2ops.yaml
